@@ -11,17 +11,18 @@ to install this :
 6. pip install -r requirement.txt
 7. create database named 'pharstor' in your phpmyadmin or mysql.
 8. specify database information in myshop/settings.py
-it should look like this if u are running xampp :
-DATABASES = {
-    'default': {
-        'NAME': 'pharstor',
-        'ENGINE': 'django.db.backends.mysql',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
-    }
-}
+<br>
+<br>it should look like this if u are running xampp :
+<br>DATABASES = {
+<br>    'default': {
+<br>        'NAME': 'pharstor',
+<br>        'ENGINE': 'django.db.backends.mysql',
+<br>        'USER': 'root',
+<br>        'PASSWORD': '',
+<br>        'HOST': '127.0.0.1',
+<br>        'PORT': '3306',
+<br>    }
+<br>}
 9. python manage.py migrate
 10. python manage.py runserver
 11. done!
