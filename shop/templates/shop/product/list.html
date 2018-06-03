@@ -1,0 +1,94 @@
+{% extends "shop/base.html" %}
+{% load static %}
+
+{% block title %}
+    {% if category %}{{ category.name }}{% else %}Products{% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 col-sm-12 col-xs-12">
+            <div id="left_part">
+                <div class="bs-example">
+
+                  <div class="panel-group" id="accordion">
+                      <div class="panel panel-default">
+                          <div class="panel-heading">
+                              <div class="infoBoxHeading">
+                                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Kategori Obat</a>
+                                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                      <i  id="accordan_plus" class="indicator glyphicon glyphicon-chevron-down  pull-right"></i>
+                                  </a>
+                              </div>
+                          </div>
+                          <div id="collapseOne" class="panel-collapse collapse in">
+                              <div class="panel-body">
+                                  <div class="infoBoxContents">
+                                    <ul style="list-style-type: none">
+                                      <li><a href="{% url "shop:product_list" %}">Semua Kategori</a></li>
+
+                                    {% for c in categories %}
+                                    <li>  <a href="{{ c.get_absolute_url }}">{{ c.name }}</a></li>
+
+                                    {% endfor %}
+                                    </ul>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+            </div>
+            <script>
+                function toggleChevron(e) {
+                    $(e.target)
+                            .prev('.panel-heading')
+                            .find("i.indicator")
+                            .toggleClass('glyphicon-chevron-down glyphicon-chevron-up');
+                }
+                $('#accordion').on('hidden.bs.collapse', toggleChevron);
+                $('#accordion').on('shown.bs.collapse', toggleChevron);
+            </script>
+
+        </div>
+        <div class="col-md-9 col-sm-12 col-xs-12">
+            <div id="right_part">
+                <div class="contentContainer">
+                    <div class="contentText">
+                        <div class="breadcrumbs">
+                            <a href="home.html" class="headerNavigation"><i class="fa fa-home"></i></a>
+                        </div>
+                    </div>
+
+                    {# produk belom rapi #}
+                    <div class="container-fluid">
+                      <div id="main" class="product-list">
+                          <h1 class="text-center">{% if category %}{{ category.name }}{% else %}Produk{% endif %}</h1>
+                      <div class="row">
+                        {% for product in products %}
+                            <div class="col-md-2">
+                                <a href="{{ product.get_absolute_url }}">
+                                    <img height="120px" width="120px" class="img-thumbnail" src="{% if product.image %}{{ product.image.url }}{% else %}{% static "dist/img/no_image.png" %}{% endif %}">
+                                </a>
+                                <br>
+                                <a href="{{ product.get_absolute_url }}">{{ product.name }}</a><br>
+                                Rp. {{ product.price }}
+                            </div>
+                        {% endfor %}
+                      </div>
+                      </div>
+                    </div>
+
+                    {# produk belom rapi #}
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+
+{% endblock %}

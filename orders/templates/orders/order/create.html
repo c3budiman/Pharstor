@@ -1,0 +1,28 @@
+{% extends "shop/base.html" %}
+
+{% block title %}Checkout{% endblock %}
+
+{% block content %}
+    <div class="order-info container">
+        <h3>Pesanan Anda : </h3>
+        <ul class="list-group">
+            {% for item in cart %}
+                <li class="list-group-item">
+                    {{ item.quantity }}x {{ item.product.name }}
+                    <span>${{ item.total_price }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+        <p>Total: Rp.{{ cart.get_total_price }}</p>
+    </div>
+    <center>
+    <form action="." method="post" class="order-form ">
+      <div class="form-group">
+        {{ form.as_p }}
+      </div>
+
+        {% csrf_token %}
+        <input class="btn btn-info" type="submit" value="Pesan" />
+    </form>
+    <center>
+{% endblock %}
