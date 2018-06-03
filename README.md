@@ -11,8 +11,7 @@ to install this :
 6. pip install -r requirement.txt
 7. create database named 'pharstor' in your phpmyadmin or mysql.
 8. specify database information in myshop/settings.py
-<br>
-<br>it should look like this if u are running xampp :
+it should look like this if u are running xampp :
 <br>DATABASES = {
 <br>    'default': {
 <br>        'NAME': 'pharstor',
