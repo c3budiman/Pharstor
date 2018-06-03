@@ -1,8 +1,12 @@
 {% extends "shop/base.html" %}
 
-{% block title %}Thank you{% endblock %}
+{% block title %}PharStor | Terima Kasih, Pesanan Berhasil{% endblock %}
 
 {% block content %}
-    <h1>Thank you</h1>
-    <p>Your order has been successfully completed. Your order number is <strong>{{ order.id }}</strong>.</p>
+<div style="margin-top:100px;" class="">
+    <h1>Terima Kasih</h1>
+    <p>Pesanan Anda Telah Kami Terima, Id pesanan anda adalah : <strong>{{ order.id }}</strong>.</p>
+    <p>Agar pesanan dapat kami proses silahkan tuntaskan pembayaran anda secepatnya.</p>
+    <hr>
+</div>
 {% endblock %}

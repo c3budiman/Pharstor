@@ -1,28 +1,39 @@
 {% extends "shop/base.html" %}
 
-{% block title %}Checkout{% endblock %}
+{% block title %}PharStor | Checkout{% endblock %}
 
 {% block content %}
+<div style="margin-bottom:-100px;" class="">
+
     <div class="order-info container">
         <h3>Pesanan Anda : </h3>
         <ul class="list-group">
             {% for item in cart %}
                 <li class="list-group-item">
                     {{ item.quantity }}x {{ item.product.name }}
-                    <span>${{ item.total_price }}</span>
+                    <span>Rp.{{ item.total_price }}</span>
                 </li>
             {% endfor %}
         </ul>
+        <center>
+        <h2>Silahkan melakukan pembayaran ke :</h2>
+        {% load staticfiles %}
+        <img src="{% static "dist/images/download.png" %}" alt="">
+        <p>No Rek : 6041127926</p>
+        <p>A/n cecep budiman</p>
         <p>Total: Rp.{{ cart.get_total_price }}</p>
+      </center>
     </div>
     <center>
+    <h2>Informasi Pengiriman Barang :</h2>
     <form action="." method="post" class="order-form ">
       <div class="form-group">
         {{ form.as_p }}
       </div>
-
         {% csrf_token %}
-        <input class="btn btn-info" type="submit" value="Pesan" />
+        <button type="submit" class="btn btn-primary btn-lg reg_button"><i class="fa fa-shopping-cart"></i> Pesan</button>
     </form>
     <center>
+
+</div>
 {% endblock %}

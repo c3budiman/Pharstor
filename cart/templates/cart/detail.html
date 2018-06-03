@@ -36,7 +36,7 @@
                                 <input type="submit" value="Update" />
                             </form>
                         </td>
-                        <td><a href="{% url "cart:cart_remove" product.id %}">Hapus</a></td>
+                        <td><a class="btn btn-danger" href="{% url "cart:cart_remove" product.id %}"><i class="fa fa-trash"></i> Hapus</a></td>
                         <td class="num">Rp.{{ item.price }}</td>
                         <td class="num">Rp.{{ item.total_price }}</td>
                     </tr>

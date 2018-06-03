@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-    {% if category %}{{ category.title }}{% else %}Products{% endif %}
+    {% if category %}{{ category.title }}{% else %}PharStor | {{ product.name }}{% endif %}
 {% endblock %}
 
 
@@ -10,15 +10,24 @@
     <div class="product-detail">
       <center>
         <img class="img-thumbnail" height="300px" width="300px" src="{% if product.image %}{{ product.image.url }}{% else %}{% static "dist/img/no_image.png" %}{% endif %}">
-        <h1>{{ product.name }}</h1>
-        <h2><a href="{{ product.category.get_absolute_url }}">{{ product.category }}</a></h2>
-        <p class="price">Rp. {{ product.price }}</p>
+        <hr>
+        <h3>{{ product.name }}</h1>
+        <h4><a href="{{ product.category.get_absolute_url }}">{{ product.category }}</a></h2>
+          <hr>
+          <hr>
+          <p>{{ product.description|linebreaks }}</p>
+          <hr>
+          <hr>
+          <h3 class="price">Rp. {{ product.price }}</h3>
+          <br>
         <form action="{% url "cart:cart_add" product.id %}" method="POST">
             {{ cart_add_form }}
             {% csrf_token %}
-            <input type="submit" value="Add to cart" />
+            <br>
+            <button type="submit" style="margin-top:20px" class="btn btn-primary btn-lg reg_button"><i class="fa fa-cart-plus"></i> Tambahkan ke keranjang</button>
         </form>
-        {{ product.description|linebreaks }}
+        <hr>
+
       </center>
     </div>
 {% endblock %}

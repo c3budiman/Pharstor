@@ -28,3 +28,12 @@ def product_detail(request, product_slug):
         'product': product,
         'cart_add_form': cart_add_form
     })
+
+def laman_tentang(request):
+    return render(request, 'shop/laman/tentang.html')
+
+def laman_garansi(request):
+    return render(request, 'shop/laman/garansi.html')
+
+def laman_howtoorder(request):
+    return render(request, 'shop/laman/howtoorder.html')
